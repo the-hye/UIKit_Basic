@@ -24,6 +24,6 @@ class JournalListViewController: UIViewController, UITableViewDataSource, UITabl
         tableView.dequeueReusableCell(withIdentifier: "journalCell", for: indexPath)
     }
     
-
+    @IBAction func unwindNewEntryCancel(segue: UIStoryboardSegue) { }
 }
 
