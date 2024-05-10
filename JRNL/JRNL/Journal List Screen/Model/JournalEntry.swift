@@ -54,6 +54,8 @@ struct SampleJournalEntryData {
                                                body: "Today is Ok day", photo: photo3) else {
             fatalError("Unable to instantiate journalEntry3")
         }
+        
+        journalEntries += [journalEntry1, journalEntry2, journalEntry3]
     }
     
 }

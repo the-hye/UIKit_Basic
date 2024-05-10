@@ -34,7 +34,21 @@ class JournalListViewController: UIViewController, UITableViewDataSource, UITabl
         return journalCell
     }
     
+    // MARK: - UITableViewDelegate
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            sampleJournalEntryData.journalEntries.remove(at: indexPath.row)
+            tableView.reloadData()
+        }
+    }
+    
     // MARK: - Methods
     @IBAction func unwindNewEntryCancel(segue: UIStoryboardSegue) { }
+    @IBAction func unwindNewEntrySave(segue: UIStoryboardSegue) {
+        if let sourceViewController = segue.source as? AddJournalEntryViewController, let newJournalEntry = sourceViewController.newJournalEntry {
+            sampleJournalEntryData.journalEntries.append(newJournalEntry)
+            tableView.reloadData()
+        }
+    }
 }
 
