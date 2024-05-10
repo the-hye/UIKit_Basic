@@ -222,7 +222,7 @@
         <!--Entry Detail-->
         <scene sceneID="bjl-Xb-sgT">
             <objects>
-                <tableViewController id="52t-I7-mZY" sceneMemberID="viewController">
+                <tableViewController id="52t-I7-mZY" customClass="JournalEntryDetailViewController" customModule="JRNL" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="xI4-fC-ypY">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -376,6 +376,12 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Entry Detail" id="8ZT-ML-cQr"/>
+                    <connections>
+                        <outlet property="bodyTextView" destination="L3D-H7-gZs" id="kdl-d1-Qy4"/>
+                        <outlet property="dataLabel" destination="Ku1-1X-fzY" id="E75-PN-MgV"/>
+                        <outlet property="photoImageView" destination="n70-Ml-TxJ" id="vqR-re-pcw"/>
+                        <outlet property="titleLabel" destination="tIB-Zs-jFk" id="OMU-bP-0nV"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hbE-Qv-hI7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
