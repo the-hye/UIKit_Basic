@@ -50,5 +50,25 @@ class JournalListViewController: UIViewController, UITableViewDataSource, UITabl
             tableView.reloadData()
         }
     }
+    
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destination.
+        // Pass the selected object to the new view controller.
+        super.prepare(for: segue, sender: sender)
+        guard segue.identifier == "entryDetail" else {
+            return
+        }
+        guard let journalEntryDetailViewController = segue.destination as? JournalEntryDetailViewController,
+              let selectedJournalCell = sender as? JournalListTableViewCell,
+              let indexPath = tableView.indexPath(for: selectedJournalCell) else {
+            fatalError("Could not get indexPath")
+        }
+        let selectedJournalEntry = sampleJournalEntryData.journalEntries[indexPath.row]
+        journalEntryDetailViewController.selectedJournalEntry = selectedJournalEntry
+
+    }
 }
 

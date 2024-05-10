@@ -63,7 +63,7 @@
                                             <outlet property="dateLabel" destination="Cjd-e0-iSW" id="c6X-ku-Kf6"/>
                                             <outlet property="photoImageView" destination="IJL-Qh-gnh" id="nKd-Si-MXb"/>
                                             <outlet property="titleLabel" destination="3L9-Px-f9m" id="iOI-7s-qhq"/>
-                                            <segue destination="52t-I7-mZY" kind="show" id="1Cn-y0-te6"/>
+                                            <segue destination="52t-I7-mZY" kind="show" identifier="entryDetail" id="1Cn-y0-te6"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -378,7 +378,7 @@
                     <navigationItem key="navigationItem" title="Entry Detail" id="8ZT-ML-cQr"/>
                     <connections>
                         <outlet property="bodyTextView" destination="L3D-H7-gZs" id="kdl-d1-Qy4"/>
-                        <outlet property="dataLabel" destination="Ku1-1X-fzY" id="E75-PN-MgV"/>
+                        <outlet property="dateLabel" destination="Ku1-1X-fzY" id="PRO-zW-ByG"/>
                         <outlet property="photoImageView" destination="n70-Ml-TxJ" id="vqR-re-pcw"/>
                         <outlet property="titleLabel" destination="tIB-Zs-jFk" id="OMU-bP-0nV"/>
                     </connections>

@@ -9,21 +9,22 @@ import UIKit
 
 class JournalEntryDetailViewController: UITableViewController {
     
-    @IBOutlet var dataLabel: UILabel!
+    @IBOutlet var dateLabel: UILabel!
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var bodyTextView: UITextView!
     @IBOutlet var photoImageView: UIImageView!
+    
+    var selectedJournalEntry: JournalEntry?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        dateLabel.text = selectedJournalEntry?.date.formatted(.dateTime.year().month(.wide).day())
+        titleLabel.text = selectedJournalEntry?.entryTitle
+        bodyTextView.text = selectedJournalEntry?.entryBody
+        photoImageView.image = selectedJournalEntry?.photo
     }
 
+    /*
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -35,6 +36,7 @@ class JournalEntryDetailViewController: UITableViewController {
         // #warning Incomplete implementation, return the number of rows
         return 0
     }
+     */
 
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
