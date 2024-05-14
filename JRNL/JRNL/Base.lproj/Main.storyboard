@@ -119,8 +119,11 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Gma-rR-6f7">
                                         <rect key="frame" x="90.5" y="52" width="154" height="31"/>
                                         <subviews>
-                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cHR-d9-RZj">
+                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="cHR-d9-RZj">
                                                 <rect key="frame" x="0.0" y="0.0" width="51" height="31"/>
+                                                <connections>
+                                                    <action selector="getLocationSwitchValueChanged:" destination="Lyx-pN-wgd" eventType="valueChanged" id="TFO-dN-Vlt"/>
+                                                </connections>
                                             </switch>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Get Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qPo-SE-Pdx">
                                                 <rect key="frame" x="57" y="0.0" width="97" height="31"/>
@@ -181,6 +184,8 @@
                     </navigationItem>
                     <connections>
                         <outlet property="bodyTextView" destination="Mbn-3Y-ye4" id="uuw-DA-MEJ"/>
+                        <outlet property="getLocationSwitch" destination="cHR-d9-RZj" id="LeM-yg-jUg"/>
+                        <outlet property="getLocationSwitchLabel" destination="qPo-SE-Pdx" id="6Jb-TN-ACl"/>
                         <outlet property="photoImageView" destination="hu1-pW-Rte" id="P7w-hA-Ze0"/>
                         <outlet property="saveButton" destination="Bcg-U5-tEC" id="AI5-h2-wrU"/>
                         <outlet property="titleTextField" destination="xdr-I2-dtw" id="P9S-JK-YZ2"/>
