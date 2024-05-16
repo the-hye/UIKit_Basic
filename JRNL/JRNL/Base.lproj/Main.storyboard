@@ -199,7 +199,7 @@
         <!--Map-->
         <scene sceneID="SZo-S9-klN">
             <objects>
-                <viewController id="z0d-uR-J13" sceneMemberID="viewController">
+                <viewController id="z0d-uR-J13" customClass="MapViewController" customModule="JRNL" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="R05-Tx-Q7F">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -219,6 +219,10 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Map" id="iCz-R6-9NC"/>
+                    <connections>
+                        <outlet property="mapView" destination="9x4-JG-h5q" id="TmW-dE-6Qn"/>
+                        <segue destination="52t-I7-mZY" kind="show" identifier="showMapDetail" id="xvG-HC-p32"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0tD-F1-pqE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -384,6 +388,7 @@
                     <connections>
                         <outlet property="bodyTextView" destination="L3D-H7-gZs" id="kdl-d1-Qy4"/>
                         <outlet property="dateLabel" destination="Ku1-1X-fzY" id="PRO-zW-ByG"/>
+                        <outlet property="mapImageView" destination="1Tq-uK-tMh" id="NyB-IU-UOx"/>
                         <outlet property="photoImageView" destination="n70-Ml-TxJ" id="vqR-re-pcw"/>
                         <outlet property="titleLabel" destination="tIB-Zs-jFk" id="OMU-bP-0nV"/>
                     </connections>
@@ -468,6 +473,9 @@
             <point key="canvasLocation" x="3073" y="-230"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="xvG-HC-p32"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="face.smiling" catalog="system" width="128" height="123"/>
         <image name="map" catalog="system" width="128" height="112"/>
