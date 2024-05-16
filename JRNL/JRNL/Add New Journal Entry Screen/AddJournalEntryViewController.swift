@@ -8,7 +8,7 @@
 import UIKit
 import CoreLocation
 
-class AddJournalEntryViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate, CLLocationManagerDelegate {
+class AddJournalEntryViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate, CLLocationManagerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     @IBOutlet var titleTextField: UITextField!
     @IBOutlet var bodyTextView: UITextView!
@@ -17,6 +17,7 @@ class AddJournalEntryViewController: UIViewController, UITextFieldDelegate, UITe
     
     @IBOutlet var getLocationSwitch: UISwitch!
     @IBOutlet var getLocationSwitchLabel: UILabel!
+    @IBOutlet var ratingView: RatingView!
     
     var newJournalEntry: JournalEntry?
     let locationManager = CLLocationManager()
@@ -41,7 +42,7 @@ class AddJournalEntryViewController: UIViewController, UITextFieldDelegate, UITe
         let title = titleTextField.text ?? ""
         let body = bodyTextView.text ?? ""
         let photo = photoImageView.image
-        let rating = 3
+        let rating = ratingView.rating
         let lat = currentLocation?.coordinate.latitude
         let lon = currentLocation?.coordinate.longitude
         newJournalEntry = JournalEntry(rating: rating, title: title, body: body, photo: photo, latitude: lat, longitude: lon)
@@ -82,6 +83,20 @@ class AddJournalEntryViewController: UIViewController, UITextFieldDelegate, UITe
         print("Failed to find user's location: \(error.localizedDescription)")
     }
     
+    // MARK: - UIImagePickerControllerDelegate
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        guard let selectedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else {
+            fatalError("Expected a dictionary containing an image, but was privided the following: \(info)")
+        }
+        let smallerImage = selectedImage.preparingThumbnail(of: CGSize(width: 300, height: 300))
+        photoImageView.image = smallerImage
+        dismiss(animated: true)
+    }
+    
     // MARK: - Methods
     private func updateSaveButtonState() {
         let textFieldText = titleTextField.text ?? ""
@@ -102,6 +117,13 @@ class AddJournalEntryViewController: UIViewController, UITextFieldDelegate, UITe
             currentLocation = nil
             getLocationSwitchLabel.text = "Get Location"
         }
+    }
+    
+    @IBAction func getPhoto(_ sender: UITapGestureRecognizer) {
+        let imagePickerController = UIImagePickerController()
+        imagePickerController.delegate = self
+        imagePickerController.sourceType = .photoLibrary
+        present(imagePickerController, animated: true)
     }
     
 }

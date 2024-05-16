@@ -13,6 +13,8 @@
 		AF3327182BEA0B7E001B1C87 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = AF3327172BEA0B7E001B1C87 /* Base */; };
 		AF33271A2BEA0B81001B1C87 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AF3327192BEA0B81001B1C87 /* Assets.xcassets */; };
 		AF33271D2BEA0B81001B1C87 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = AF33271C2BEA0B81001B1C87 /* Base */; };
+		AF787EFA2BF587D800F2E514 /* SharedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF787EF92BF587D800F2E514 /* SharedData.swift */; };
+		AF787EFC2BF5BDBA00F2E514 /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF787EFB2BF5BDBA00F2E514 /* RatingView.swift */; };
 		AFDBAA562BF3282F007A9BA1 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFDBAA552BF3282F007A9BA1 /* MapViewController.swift */; };
 		AFE82A802BEDB8F90015957A /* JournalEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE82A7F2BEDB8F90015957A /* JournalEntry.swift */; };
 		AFE82A822BEDC0D50015957A /* JournalListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE82A812BEDC0D50015957A /* JournalListTableViewCell.swift */; };
@@ -29,6 +31,8 @@
 		AF3327192BEA0B81001B1C87 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AF33271C2BEA0B81001B1C87 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AF33271E2BEA0B81001B1C87 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AF787EF92BF587D800F2E514 /* SharedData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedData.swift; sourceTree = "<group>"; };
+		AF787EFB2BF5BDBA00F2E514 /* RatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingView.swift; sourceTree = "<group>"; };
 		AFDBAA552BF3282F007A9BA1 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		AFE82A7F2BEDB8F90015957A /* JournalEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalEntry.swift; sourceTree = "<group>"; };
 		AFE82A812BEDC0D50015957A /* JournalListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalListTableViewCell.swift; sourceTree = "<group>"; };
@@ -70,6 +74,7 @@
 				AF3327122BEA0B7E001B1C87 /* SceneDelegate.swift */,
 				AFE82A882BEE01890015957A /* Entry Detail Scene */,
 				AFE82A7E2BEDB88F0015957A /* Model */,
+				AFE82A7D2BEDB8860015957A /* View */,
 				AFE82A7C2BEDB7FD0015957A /* Journal List Screen */,
 				AFE82A832BEDDCD10015957A /* Add New Journal Entry Screen */,
 				AFDBAA542BF327E8007A9BA1 /* Map Screen */,
@@ -92,7 +97,6 @@
 		AFE82A7C2BEDB7FD0015957A /* Journal List Screen */ = {
 			isa = PBXGroup;
 			children = (
-				AFE82A7D2BEDB8860015957A /* View */,
 				AF3327142BEA0B7E001B1C87 /* JournalListViewController.swift */,
 			);
 			path = "Journal List Screen";
@@ -102,6 +106,7 @@
 			isa = PBXGroup;
 			children = (
 				AFE82A812BEDC0D50015957A /* JournalListTableViewCell.swift */,
+				AF787EFB2BF5BDBA00F2E514 /* RatingView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -110,6 +115,7 @@
 			isa = PBXGroup;
 			children = (
 				AFE82A7F2BEDB8F90015957A /* JournalEntry.swift */,
+				AF787EF92BF587D800F2E514 /* SharedData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -201,8 +207,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF787EFA2BF587D800F2E514 /* SharedData.swift in Sources */,
 				AF3327152BEA0B7E001B1C87 /* JournalListViewController.swift in Sources */,
 				AF3327112BEA0B7E001B1C87 /* AppDelegate.swift in Sources */,
+				AF787EFC2BF5BDBA00F2E514 /* RatingView.swift in Sources */,
 				AFE82A802BEDB8F90015957A /* JournalEntry.swift in Sources */,
 				AFE82A822BEDC0D50015957A /* JournalListTableViewCell.swift in Sources */,
 				AF3327132BEA0B7E001B1C87 /* SceneDelegate.swift in Sources */,
@@ -362,6 +370,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = JRNL/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "사용자의 위치 정보를 항상 확인합니다.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "사용자의 위치 정보를 사용 중에만 확인합니다.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -391,6 +400,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = JRNL/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "사용자의 위치 정보를 항상 확인합니다.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "사용자의 위치 정보를 사용 중에만 확인합니다.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
