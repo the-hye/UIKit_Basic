@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AF787EFF2BF5EDFC00F2E514 /* JournalEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF787EFE2BF5EDFC00F2E514 /* JournalEntity.swift */; };
 		AFE82A982BF191E70015957A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE82A972BF191E70015957A /* AppDelegate.swift */; };
 		AFE82A9A2BF191E70015957A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE82A992BF191E70015957A /* SceneDelegate.swift */; };
 		AFE82A9C2BF191E70015957A /* JournalListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE82A9B2BF191E70015957A /* JournalListViewController.swift */; };
@@ -16,10 +17,10 @@
 		AFE82AAE2BF1A2A40015957A /* AddJournalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE82AAD2BF1A2A40015957A /* AddJournalViewController.swift */; };
 		AFE82AB02BF1B4590015957A /* JournalDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE82AAF2BF1B4590015957A /* JournalDetailViewController.swift */; };
 		AFE82AB22BF1B57B0015957A /* JournalListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE82AB12BF1B57B0015957A /* JournalListTableViewCell.swift */; };
-		AFE82AB52BF1E5730015957A /* JournalEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE82AB42BF1E5730015957A /* JournalEntry.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AF787EFE2BF5EDFC00F2E514 /* JournalEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalEntity.swift; sourceTree = "<group>"; };
 		AFE82A942BF191E70015957A /* JRNL-CodeOnly.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "JRNL-CodeOnly.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFE82A972BF191E70015957A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AFE82A992BF191E70015957A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -31,7 +32,6 @@
 		AFE82AAD2BF1A2A40015957A /* AddJournalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddJournalViewController.swift; sourceTree = "<group>"; };
 		AFE82AAF2BF1B4590015957A /* JournalDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalDetailViewController.swift; sourceTree = "<group>"; };
 		AFE82AB12BF1B57B0015957A /* JournalListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalListTableViewCell.swift; sourceTree = "<group>"; };
-		AFE82AB42BF1E5730015957A /* JournalEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JournalEntry.swift; path = "../../JRNL/JRNL/Journal List Screen/Model/JournalEntry.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,8 +72,8 @@
 				AFE82AAB2BF196780015957A /* MapViewController.swift */,
 				AFE82AA02BF191EB0015957A /* Assets.xcassets */,
 				AFE82AA22BF191EB0015957A /* LaunchScreen.storyboard */,
-				AFE82AB42BF1E5730015957A /* JournalEntry.swift */,
 				AFE82AA52BF191EB0015957A /* Info.plist */,
+				AF787EFE2BF5EDFC00F2E514 /* JournalEntity.swift */,
 			);
 			path = "JRNL-CodeOnly";
 			sourceTree = "<group>";
@@ -159,11 +159,11 @@
 			files = (
 				AFE82A9C2BF191E70015957A /* JournalListViewController.swift in Sources */,
 				AFE82AB02BF1B4590015957A /* JournalDetailViewController.swift in Sources */,
-				AFE82AB52BF1E5730015957A /* JournalEntry.swift in Sources */,
 				AFE82AB22BF1B57B0015957A /* JournalListTableViewCell.swift in Sources */,
 				AFE82A982BF191E70015957A /* AppDelegate.swift in Sources */,
 				AFE82A9A2BF191E70015957A /* SceneDelegate.swift in Sources */,
 				AFE82AAC2BF196780015957A /* MapViewController.swift in Sources */,
+				AF787EFF2BF5EDFC00F2E514 /* JournalEntity.swift in Sources */,
 				AFE82AAE2BF1A2A40015957A /* AddJournalViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -310,6 +310,9 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "JRNL-CodeOnly/Info.plist";
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "앱이 항상 그리고 사용중에 위치를 사용하게 하시겠습니까?";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "앱이 사용중에 위치를 사용하게 하시겠습니까?";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -336,6 +339,9 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "JRNL-CodeOnly/Info.plist";
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "앱이 항상 그리고 사용중에 위치를 사용하게 하시겠습니까?";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "앱이 사용중에 위치를 사용하게 하시겠습니까?";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
