@@ -12,4 +12,6 @@ AutoLayout
 
 StackView  
 - axis : .vertical, .horizontal  
- 
+- UIToggle : toggle on/off  
+- UIStepper : 값이 증감되는 UI  
+- addAction : action 추가   
