@@ -15,3 +15,5 @@ StackView
 - UIToggle : toggle on/off  
 - UIStepper : 값이 증감되는 UI  
 - addAction : action 추가   
+- UISlider : slider  
+

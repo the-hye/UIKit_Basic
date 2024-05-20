@@ -10,8 +10,10 @@ import UIKit
 class ViewController: UIViewController {
     let toggleSwitch = UISwitch()
     let stepper = UIStepper()
+    let slider = UISlider()
     let label1 = UILabel()
     let label2 = UILabel()
+    let label3 = UILabel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -80,7 +82,7 @@ class ViewController: UIViewController {
             stackView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         ])
         
-        label2.text = "값 : 0"
+        label2.text = "값 : 0.0"
         stepper.minimumValue = 0
         stepper.maximumValue = 10
         stepper.stepValue = 1
@@ -101,6 +103,30 @@ class ViewController: UIViewController {
         NSLayoutConstraint.activate([
             stackView2.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 20),
             stackView2.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+        ])
+        
+        label3.text = "값 : 0.5"
+        slider.minimumValue = 0
+        slider.maximumValue = 1
+        slider.value = 0.5
+        slider.isContinuous = true
+        slider.addAction(UIAction { [weak self] _ in
+            self?.label3.text = "값: \(String(format: "%.1f", self?.slider.value ?? 0))"
+        }, for: .valueChanged)
+        
+        let stackView3 = UIStackView(arrangedSubviews: [label3, slider])
+        stackView3.axis = .vertical
+        stackView3.spacing = 10
+        stackView3.alignment = .fill
+        
+        view.addSubview(stackView3)
+        
+        stackView3.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            stackView3.topAnchor.constraint(equalTo: stackView2.bottomAnchor, constant: 20),
+            stackView3.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            stackView3.widthAnchor.constraint(equalToConstant: 200)
         ])
     }
     
