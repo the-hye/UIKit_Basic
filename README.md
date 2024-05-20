@@ -7,4 +7,5 @@ AutoLayout
 - constraints : 너비 제약 조건 
 - constant : 객체의 크기 조절  
 - lessThanOrEqualToConstant : 최소 제약 조건  
-- greaterThanOrEqualToConstant : 최대 제약 조건   
+- greaterThanOrEqualToConstant : 최대 제약 조건  
+- multiplier : 상대적 크기 조절 시 사용(배수)   
