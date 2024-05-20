@@ -6,35 +6,7 @@
 //
 
 import UIKit
-
-class CustomTableViewCell: UITableViewCell {
-    var stackView: UIStackView!
-    
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        setupUI()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    func setupUI() {
-        stackView = UIStackView()
-        stackView.axis = .horizontal
-        stackView.backgroundColor = .orange
-        stackView.spacing = 8
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        contentView.addSubview(stackView)
-        
-        NSLayoutConstraint.activate([
-            stackView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
-            stackView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            stackView.widthAnchor.constraint(equalToConstant: 252),
-            stackView.heightAnchor.constraint(equalToConstant: 44)
-        ])
-    }
-}
+import MapKit
 
 class JournalDetailViewController: UITableViewController {
     
@@ -48,6 +20,15 @@ class JournalDetailViewController: UITableViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         
         return label
+    }()
+    
+    private lazy var ratingView: RatingView = {
+        let ratingView = RatingView(frame: CGRect(x: 0, y: 0, width: 252, height: 44))
+        ratingView.distribution = .equalSpacing
+        ratingView.isUserInteractionEnabled = false
+        ratingView.translatesAutoresizingMaskIntoConstraints = false
+        
+        return ratingView
     }()
     
     private lazy var titleLabel: UILabel = {
@@ -85,6 +66,26 @@ class JournalDetailViewController: UITableViewController {
         imageView.contentMode = .scaleAspectFit
         imageView.translatesAutoresizingMaskIntoConstraints = false
         
+        guard let latitude = journalEntry.latitude,
+              let longitude = journalEntry.longitude else {
+            return imageView
+        }
+        let location = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+        let region = MKCoordinateRegion(center: location, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+        
+        let options = MKMapSnapshotter.Options()
+        options.region = region
+        options.size = CGSize(width: 300, height: 300)
+        
+        let shotter = MKMapSnapshotter(options: options)
+        shotter.start { result, error in
+            guard let snapshot = result else {
+                print("Snapshot error: \(error?.localizedDescription ?? "")")
+                return
+            }
+            imageView.image = snapshot.image
+        }
+        
         return imageView
     }()
     
@@ -101,7 +102,6 @@ class JournalDetailViewController: UITableViewController {
         super.viewDidLoad()
         
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
-        tableView.register(CustomTableViewCell.self, forCellReuseIdentifier: "customCell")
         navigationItem.title = "Detail"
     }
     
@@ -133,7 +133,13 @@ class JournalDetailViewController: UITableViewController {
             ])
             return cell
         case 1:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "customCell", for: indexPath) as! CustomTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+            cell.contentView.addSubview(ratingView)
+            ratingView.rating = journalEntry.rating
+            ratingView.centerXAnchor.constraint(equalTo: cell.contentView.centerXAnchor).isActive = true
+            ratingView.centerYAnchor.constraint(equalTo: cell.contentView.centerYAnchor).isActive = true
+            ratingView.widthAnchor.constraint(equalToConstant: 252).isActive = true
+            ratingView.heightAnchor.constraint(equalToConstant: 44).isActive = true
             return cell
         case 2:
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
@@ -193,50 +199,4 @@ class JournalDetailViewController: UITableViewController {
         default: return 44.5
         }
     }
-    
-    /*
-     // Override to support conditional editing of the table view.
-     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-     // Return false if you do not want the specified item to be editable.
-     return true
-     }
-     */
-    
-    /*
-     // Override to support editing the table view.
-     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-     if editingStyle == .delete {
-     // Delete the row from the data source
-     tableView.deleteRows(at: [indexPath], with: .fade)
-     } else if editingStyle == .insert {
-     // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-     }
-     }
-     */
-    
-    /*
-     // Override to support rearranging the table view.
-     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-     
-     }
-     */
-    
-    /*
-     // Override to support conditional rearranging of the table view.
-     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-     // Return false if you do not want the item to be re-orderable.
-     return true
-     }
-     */
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
 }

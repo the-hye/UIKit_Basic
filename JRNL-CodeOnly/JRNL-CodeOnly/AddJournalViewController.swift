@@ -12,10 +12,15 @@ protocol AddJournalControllerDelegate: NSObject {
     func saveJournalEntry(_ journalEntry: JournalEntry)
 }
 
-class AddJournalViewController: UIViewController, CLLocationManagerDelegate {
+class AddJournalViewController: UIViewController, CLLocationManagerDelegate, UITextViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     weak var delegate: AddJournalControllerDelegate?
-    final let LABEL_VIEW_TAG = 99
+    final let LABEL_VIEW_TAG = 1001
+    var locationSwitchIsOn = false {
+        didSet {
+            updateSaveButtonState()
+        }
+    }
     
     let locationManager = CLLocationManager()
     var currentLocation: CLLocation?
@@ -30,12 +35,12 @@ class AddJournalViewController: UIViewController, CLLocationManagerDelegate {
         return stackView
     }()
     
-    private lazy var ratingView: UIStackView = {
-        let stackView = UIStackView(frame: CGRect(x: 0, y: 0, width: 252, height: 44))
-        stackView.axis = .horizontal
-        stackView.backgroundColor = .yellow
+    private lazy var ratingView: RatingView = {
+        let ratingView = RatingView(frame: CGRect(x: 0, y: 0, width: 252, height: 44))
+        ratingView.axis = .horizontal
+        ratingView.distribution = .fillEqually
         
-        return stackView
+        return ratingView
     }()
     
     private lazy var toggleView: UIStackView = {
@@ -50,7 +55,7 @@ class AddJournalViewController: UIViewController, CLLocationManagerDelegate {
         switchComponent.addTarget(self, action: #selector(valueChanged(sender:)), for: .valueChanged)
         
         let labelComponent = UILabel()
-        labelComponent.text = "Switch Label"
+        labelComponent.text = "Get Location"
         labelComponent.tag = LABEL_VIEW_TAG
         
         stackView.addArrangedSubview(switchComponent)
@@ -62,6 +67,7 @@ class AddJournalViewController: UIViewController, CLLocationManagerDelegate {
     private lazy var titleTextField: UITextField = {
         let textField = UITextField()
         textField.placeholder = "Journal Title"
+        textField.addTarget(self, action: #selector(textChanged(textField:)), for: .editingChanged)
         
         return textField
     }()
@@ -69,6 +75,7 @@ class AddJournalViewController: UIViewController, CLLocationManagerDelegate {
     private lazy var bodyTextView: UITextView = {
         let textView = UITextView()
         textView.text = "Journal Body"
+        textView.delegate = self
         
         return textView
     }()
@@ -76,9 +83,18 @@ class AddJournalViewController: UIViewController, CLLocationManagerDelegate {
     private lazy var imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(systemName: "tortoise")
+        imageView.isUserInteractionEnabled = true
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped))
+        imageView.addGestureRecognizer(tapGestureRecognizer)
         
         return imageView
     }()
+    
+    private lazy var saveButton: UIBarButtonItem = {
+            return UIBarButtonItem(barButtonSystemItem: .save,
+                                   target: self,
+                                   action: #selector(save))
+        }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -86,7 +102,9 @@ class AddJournalViewController: UIViewController, CLLocationManagerDelegate {
         navigationItem.title = "New Entry"
         view.backgroundColor = .white
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(save))
+        navigationItem.rightBarButtonItem = saveButton
+        saveButton.isEnabled = false
+        
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancel))
         
         mainContainer.addArrangedSubview(ratingView)
@@ -128,16 +146,50 @@ class AddJournalViewController: UIViewController, CLLocationManagerDelegate {
         locationManager.requestAlwaysAuthorization()
     }
     
+    // MARK: - UIImagePickerControllerDelegate
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        guard let selectedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else {
+            fatalError("Expected a dictionary containing an image: \(info)")
+        }
+        let smallerImage = selectedImage.preparingThumbnail(of: CGSize(width: 300, height: 300))
+        imageView.image = smallerImage
+        dismiss(animated: true)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true)
+    }
+    
+    // MARK: - Methods
+    func updateSaveButtonState() {
+        if locationSwitchIsOn {
+            guard let title = titleTextField.text, !title.isEmpty,
+                  let body = bodyTextView.text, !body.isEmpty,
+                  let _ = currentLocation else {
+                saveButton.isEnabled = false
+                return
+            }
+            saveButton.isEnabled = true
+        } else {
+            guard let title = titleTextField.text, !title.isEmpty,
+                  let body = bodyTextView.text, !body.isEmpty else {
+                saveButton.isEnabled = false
+                return
+            }
+            saveButton.isEnabled = true
+        }
+    }
+    
     @objc func save() {
         guard let title = titleTextField.text, !title.isEmpty,
               let body = bodyTextView.text, !body.isEmpty else {
             return
         }
-        
+        let rating = ratingView.rating
         let lat = currentLocation?.coordinate.latitude
         let lon = currentLocation?.coordinate.longitude
         
-        let journalEntry = JournalEntry(rating: 3, title: title, body: body, photo: UIImage(systemName: "face.smiling"), latitude: lat, longitude: lon)!
+        let journalEntry = JournalEntry(rating: rating, title: title, body: body, photo: UIImage(systemName: "face.smiling")?.withRenderingMode(.alwaysOriginal), latitude: lat, longitude: lon)!
         delegate?.saveJournalEntry(journalEntry)
         dismiss(animated: true)
     }
@@ -147,6 +199,8 @@ class AddJournalViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     @objc func valueChanged(sender: UISwitch) {
+        locationSwitchIsOn = sender.isOn
+        
         if sender.isOn {
             if let label = toggleView.viewWithTag(LABEL_VIEW_TAG) as? UILabel {
                 label.text = "Getting location..."
@@ -160,6 +214,17 @@ class AddJournalViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
     
+    @objc func textChanged(textField: UITextField) {
+            updateSaveButtonState()
+        }
+    
+    @objc func imageTapped() {
+        let imagePickerController = UIImagePickerController()
+        imagePickerController.delegate = self
+        imagePickerController.sourceType = .photoLibrary
+        present(imagePickerController, animated: true)
+    }
+    
     // MARK: - CLLocationManagerDelegate
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let myCurrentLocation = locations.first {
@@ -167,6 +232,7 @@ class AddJournalViewController: UIViewController, CLLocationManagerDelegate {
             if let label = toggleView.viewWithTag(LABEL_VIEW_TAG) as? UILabel {
                 label.text = "Done"
             }
+            updateSaveButtonState()
         }
     }
     

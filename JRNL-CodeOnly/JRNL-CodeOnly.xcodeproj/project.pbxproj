@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		AF787EFF2BF5EDFC00F2E514 /* JournalEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF787EFE2BF5EDFC00F2E514 /* JournalEntity.swift */; };
+		AF787F022BF7202000F2E514 /* SharedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF787F012BF7202000F2E514 /* SharedData.swift */; };
+		AF787F052BF73D5800F2E514 /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF787F042BF73D5800F2E514 /* RatingView.swift */; };
 		AFE82A982BF191E70015957A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE82A972BF191E70015957A /* AppDelegate.swift */; };
 		AFE82A9A2BF191E70015957A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE82A992BF191E70015957A /* SceneDelegate.swift */; };
 		AFE82A9C2BF191E70015957A /* JournalListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE82A9B2BF191E70015957A /* JournalListViewController.swift */; };
@@ -21,6 +23,8 @@
 
 /* Begin PBXFileReference section */
 		AF787EFE2BF5EDFC00F2E514 /* JournalEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalEntity.swift; sourceTree = "<group>"; };
+		AF787F012BF7202000F2E514 /* SharedData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedData.swift; sourceTree = "<group>"; };
+		AF787F042BF73D5800F2E514 /* RatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingView.swift; sourceTree = "<group>"; };
 		AFE82A942BF191E70015957A /* JRNL-CodeOnly.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "JRNL-CodeOnly.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFE82A972BF191E70015957A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AFE82A992BF191E70015957A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -45,6 +49,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AF787F002BF7200E00F2E514 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				AF787EFE2BF5EDFC00F2E514 /* JournalEntity.swift */,
+				AF787F012BF7202000F2E514 /* SharedData.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		AF787F032BF73CF500F2E514 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				AFE82AB12BF1B57B0015957A /* JournalListTableViewCell.swift */,
+				AF787F042BF73D5800F2E514 /* RatingView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		AFE82A8B2BF191E70015957A = {
 			isa = PBXGroup;
 			children = (
@@ -64,27 +86,19 @@
 		AFE82A962BF191E70015957A /* JRNL-CodeOnly */ = {
 			isa = PBXGroup;
 			children = (
+				AF787F032BF73CF500F2E514 /* Views */,
+				AF787F002BF7200E00F2E514 /* Model */,
 				AFE82A972BF191E70015957A /* AppDelegate.swift */,
 				AFE82A992BF191E70015957A /* SceneDelegate.swift */,
-				AFE82AB32BF1B5900015957A /* JournalListScreen */,
 				AFE82AAF2BF1B4590015957A /* JournalDetailViewController.swift */,
 				AFE82AAD2BF1A2A40015957A /* AddJournalViewController.swift */,
 				AFE82AAB2BF196780015957A /* MapViewController.swift */,
+				AFE82A9B2BF191E70015957A /* JournalListViewController.swift */,
 				AFE82AA02BF191EB0015957A /* Assets.xcassets */,
 				AFE82AA22BF191EB0015957A /* LaunchScreen.storyboard */,
 				AFE82AA52BF191EB0015957A /* Info.plist */,
-				AF787EFE2BF5EDFC00F2E514 /* JournalEntity.swift */,
 			);
 			path = "JRNL-CodeOnly";
-			sourceTree = "<group>";
-		};
-		AFE82AB32BF1B5900015957A /* JournalListScreen */ = {
-			isa = PBXGroup;
-			children = (
-				AFE82A9B2BF191E70015957A /* JournalListViewController.swift */,
-				AFE82AB12BF1B57B0015957A /* JournalListTableViewCell.swift */,
-			);
-			path = JournalListScreen;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -157,8 +171,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF787F022BF7202000F2E514 /* SharedData.swift in Sources */,
 				AFE82A9C2BF191E70015957A /* JournalListViewController.swift in Sources */,
 				AFE82AB02BF1B4590015957A /* JournalDetailViewController.swift in Sources */,
+				AF787F052BF73D5800F2E514 /* RatingView.swift in Sources */,
 				AFE82AB22BF1B57B0015957A /* JournalListTableViewCell.swift in Sources */,
 				AFE82A982BF191E70015957A /* AppDelegate.swift in Sources */,
 				AFE82A9A2BF191E70015957A /* SceneDelegate.swift in Sources */,
@@ -311,8 +327,10 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "JRNL-CodeOnly/Info.plist";
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_NSCameraUsageDescription = "엡이 카메라를 사용하게 하시겠습니까?";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "앱이 항상 그리고 사용중에 위치를 사용하게 하시겠습니까?";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "앱이 사용중에 위치를 사용하게 하시겠습니까?";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "앱이 사진 라이브러리에 접근 가능하도록 하시겠습니까?";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -340,8 +358,10 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "JRNL-CodeOnly/Info.plist";
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_NSCameraUsageDescription = "엡이 카메라를 사용하게 하시겠습니까?";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "앱이 항상 그리고 사용중에 위치를 사용하게 하시겠습니까?";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "앱이 사용중에 위치를 사용하게 하시겠습니까?";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "앱이 사진 라이브러리에 접근 가능하도록 하시겠습니까?";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
