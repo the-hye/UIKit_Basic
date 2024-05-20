@@ -22,4 +22,7 @@ Spacer
 - setContentCompressionResistancePriority 
 
 Text  
- 
+
+Image  
+- CAGradientLayer : 그라데이션  
+
