@@ -1,7 +1,9 @@
 # UIKit_Basic
 
-[24.05.10]  
-TableViewBasic  
-- how to build table view  
-
-
+[2024.05.20]  
+AutoLayout  
+- translatesAutoresizingMaskIntoConstraints : auto resizing  
+- safeAreaLayoutGuide : 탭 표시줄 등 가려지는 부분  
+- constraints : 너비 제약 조건 
+- constant : 객체의 크기 조절  
+ 
