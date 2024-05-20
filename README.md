@@ -17,6 +17,9 @@ StackView
 - addAction : action 추가   
 - UISlider : slider  
 
-Spacker  
+Spacer  
 - setContentHuggingPriority  
-- setContentCompressionResistancePriority  
+- setContentCompressionResistancePriority 
+
+Text  
+ 
