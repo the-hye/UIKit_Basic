@@ -38,3 +38,7 @@ Picker
 
 Link  
 
+MenuAlert  
+- UIAlertController  
+- popoverPresentationController : 아이패드 내 팝오버 형태로 나타남  
+
