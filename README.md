@@ -26,6 +26,12 @@ Text
 Image  
 - CAGradientLayer : 그라데이션  
 
+[2024.05.21]  
 SegmentedControll  
 - UIButton.Configuration : config 정보 추가를 위한 struct  
 - UISegmentedControll : segment에 따른 뷰 업데이트  
+
+Picker  
+- UIPickerView  
+- UIDatePicker  
+- UIColorPickerController
