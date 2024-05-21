@@ -34,4 +34,7 @@ SegmentedControll
 Picker  
 - UIPickerView  
 - UIDatePicker  
-- UIColorPickerController
+- UIColorPickerController  
+
+Link  
+
