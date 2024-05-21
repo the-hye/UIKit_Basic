@@ -26,3 +26,5 @@ Text
 Image  
 - CAGradientLayer : 그라데이션  
 
+SegmentedControll  
+- UIButton.Configuration : config 정보 추가를 위한 struct  
