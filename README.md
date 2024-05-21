@@ -28,3 +28,4 @@ Image
 
 SegmentedControll  
 - UIButton.Configuration : config 정보 추가를 위한 struct  
+- UISegmentedControll : segment에 따른 뷰 업데이트  
