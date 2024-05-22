@@ -55,3 +55,8 @@ ContextMenu
 
 CustomDatePicker  
 
+List  
+- resister로 등록을 해야 deque를 할 수 있음  
+
+
+
