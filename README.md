@@ -42,3 +42,9 @@ MenuAlert
 - UIAlertController  
 - popoverPresentationController : 아이패드 내 팝오버 형태로 나타남  
 
+[2024.05.22]  
+Gesture  
+- isUserInteractionEnabled : user 이벤트 전달 여부  
+- UITapGestureRecognizer  
+- UILongPressGestureRecognizer  
+- UIRotationGestureRecognizer  
