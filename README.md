@@ -48,3 +48,7 @@ Gesture
 - UITapGestureRecognizer  
 - UILongPressGestureRecognizer  
 - UIRotationGestureRecognizer  
+
+ContextMenu  
+- UIContextMenuInteraction  
+- UIMenu  
