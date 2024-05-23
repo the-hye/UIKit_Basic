@@ -59,4 +59,7 @@ List
 - resister로 등록을 해야 deque를 할 수 있음  
 - customCell class를 통해 cell을 커스텀할 수 있음  
 
+[2024.05.23]  
+Form  
+
 
