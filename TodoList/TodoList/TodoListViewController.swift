@@ -9,7 +9,7 @@ import UIKit
 
 class TodoListViewController: UIViewController, UITableViewDataSource {
 
-    var todoItems: [TodoItem] = []
+    var todoItems: [TodoItem] = [TodoItem(id: UUID(), title: "Test", completed: false)]
     
     private let tableView: UITableView = {
         let tableView = UITableView()
@@ -22,6 +22,7 @@ class TodoListViewController: UIViewController, UITableViewDataSource {
 
         self.title = "Todo List"
         self.view.backgroundColor = .white
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addTodo))
         
         if let navigationController = navigationController {
             let appearance = UINavigationBarAppearance()
@@ -31,7 +32,7 @@ class TodoListViewController: UIViewController, UITableViewDataSource {
             navigationController.navigationBar.scrollEdgeAppearance = appearance
         }
         
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        tableView.register(TodoListTableViewCell.self, forCellReuseIdentifier: "cell")
         tableView.dataSource = self
         view.addSubview(tableView)
         
@@ -45,17 +46,22 @@ class TodoListViewController: UIViewController, UITableViewDataSource {
     
     // MARK: - UITableViewDataSource
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        10
+        5
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! TodoListTableViewCell
 //        let todoItem = todoItems[indexPath.row]
-//        //cell.text
+//        cell.configuration(todoItem: todoItem)
+//        return cell
+//        tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        cell.title.text = "Test Title"
+        cell.complete.isOn = true
         return cell
     }
     
     @objc func addTodo() {
-        
+        print("Click!")
+        let addTodoController = AddTodoViewController()
     }
 }

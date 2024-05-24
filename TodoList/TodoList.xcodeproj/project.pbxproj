@@ -15,6 +15,7 @@
 		AFCC37F02C0011FD00E3F70A /* TodoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCC37EF2C0011FD00E3F70A /* TodoItem.swift */; };
 		AFCC37F22C00159700E3F70A /* TodoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCC37F12C00159700E3F70A /* TodoListViewController.swift */; };
 		AFCC37F42C00209400E3F70A /* TodoListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCC37F32C00209400E3F70A /* TodoListTableViewCell.swift */; };
+		AFCC37F62C002CD900E3F70A /* AddTodoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCC37F52C002CD900E3F70A /* AddTodoViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		AFCC37EF2C0011FD00E3F70A /* TodoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoItem.swift; sourceTree = "<group>"; };
 		AFCC37F12C00159700E3F70A /* TodoListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListViewController.swift; sourceTree = "<group>"; };
 		AFCC37F32C00209400E3F70A /* TodoListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListTableViewCell.swift; sourceTree = "<group>"; };
+		AFCC37F52C002CD900E3F70A /* AddTodoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTodoViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 			children = (
 				AFCC37DB2C0011C200E3F70A /* AppDelegate.swift */,
 				AFCC37F12C00159700E3F70A /* TodoListViewController.swift */,
+				AFCC37F52C002CD900E3F70A /* AddTodoViewController.swift */,
 				AFCC37F32C00209400E3F70A /* TodoListTableViewCell.swift */,
 				AFCC37DD2C0011C200E3F70A /* SceneDelegate.swift */,
 				AFCC37DF2C0011C200E3F70A /* ViewController.swift */,
@@ -144,6 +147,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AFCC37E02C0011C200E3F70A /* ViewController.swift in Sources */,
+				AFCC37F62C002CD900E3F70A /* AddTodoViewController.swift in Sources */,
 				AFCC37DC2C0011C200E3F70A /* AppDelegate.swift in Sources */,
 				AFCC37F02C0011FD00E3F70A /* TodoItem.swift in Sources */,
 				AFCC37DE2C0011C200E3F70A /* SceneDelegate.swift in Sources */,
