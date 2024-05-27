@@ -63,5 +63,8 @@ class TodoListViewController: UIViewController, UITableViewDataSource {
     @objc func addTodo() {
         print("Click!")
         let addTodoController = AddTodoViewController()
+        let navigationController = UINavigationController(rootViewController: addTodoController)
+//        addTodoController.delegate = self
+        present(navigationController, animated: true)
     }
 }

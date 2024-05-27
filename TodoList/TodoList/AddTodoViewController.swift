@@ -12,11 +12,12 @@ class AddTodoViewController: UIViewController {
     private var titleLabel: UILabel = {
         let title = UILabel()
         title.translatesAutoresizingMaskIntoConstraints = false
+        
         return title
     }()
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        view.backgroundColor = .white
         self.title = "할 일 추가하기"
         view.addSubview(titleLabel)
         
