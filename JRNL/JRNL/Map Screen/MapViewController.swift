@@ -19,8 +19,11 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     var container: ModelContainer?
     var context: ModelContext?
     
+    var annotations: [JournalMapAnnotation] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        mapView.removeAnnotations(annotations)
         
         locationManager.delegate = self
         locationManager.requestAlwaysAuthorization()
@@ -52,9 +55,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             guard let journalEntries = try? context?.fetch(descriptor) else {
                 return
             }
-            let annotations = journalEntries.map {
-                JournalMapAnnotation(journal: $0)
-            }
+            annotations = journalEntries.map { JournalMapAnnotation(journal: $0)}
             mapView.addAnnotations(annotations)
         }
     }

@@ -88,7 +88,7 @@ class JournalListViewController: UIViewController, UICollectionViewDelegate, UIC
                     self?.context?.delete(selectedJournalEntry)
                 } else {
                     if let selectedJournalEntry = self?.journalEntries[indexPath.item] {
-                        self?.journalEntries.remove(at: indexPath.row)
+                        self?.journalEntries.remove(at: indexPath.item)
                         self?.context?.delete(selectedJournalEntry)
                     }
                 }
