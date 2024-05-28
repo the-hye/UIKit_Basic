@@ -6,25 +6,70 @@
 //
 
 import UIKit
+import SwiftData
 
-class JournalListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class JournalListViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UISearchResultsUpdating {
     
-    @IBOutlet var tableView: UITableView!
+    @IBOutlet var collectionView: UICollectionView!
+    let search = UISearchController(searchResultsController: nil)
+    var filteredTableData: [JournalEntry] = []
+    var journalEntries: [JournalEntry] = []
+    
+    var container: ModelContainer?
+    var context: ModelContext?
+    let descriptor = FetchDescriptor<JournalEntry>(sortBy: [SortDescriptor<JournalEntry>(\.dateString)])
     
     // MARK: - Properties
     override func viewDidLoad() {
         super.viewDidLoad()
-        SharedData.shared.loadJournalEntriesData()
+        guard let _container = try? ModelContainer(for: JournalEntry.self) else {
+            fatalError("Could not initialize container")
+        }
+        container = _container
+        context = ModelContext(_container)
+        
+        fetchJournalEntries()
+        
+        setupCollectionView()
+        
+        search.searchResultsUpdater = self
+        search.obscuresBackgroundDuringPresentation = false
+        search.searchBar.placeholder = "Search Titles"
+        navigationItem.searchController = search
     }
     
-    // MARK: - UITableViewDataSource
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        SharedData.shared.numberOfJournalEntries()
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        collectionView.collectionViewLayout.invalidateLayout()
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let journalCell = tableView.dequeueReusableCell(withIdentifier: "journalCell", for: indexPath) as! JournalListTableViewCell
-        let journalEntry = SharedData.shared.getJournalEntry(index: indexPath.row)
+    func setupCollectionView() {
+        let flowLayout = UICollectionViewFlowLayout()
+        flowLayout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        flowLayout.minimumInteritemSpacing = 0
+        flowLayout.minimumLineSpacing = 10
+        collectionView.collectionViewLayout = flowLayout
+    }
+    
+    // MARK: - UICollectionViewDataSource
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if search.isActive {
+            return self.filteredTableData.count
+        } else {
+            return self.journalEntries.count
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let journalCell = collectionView.dequeueReusableCell(withReuseIdentifier: "journalCell", for: indexPath) as! JournalListCollectionViewCell
+        
+        let journalEntry: JournalEntry
+        if self.search.isActive {
+            journalEntry = filteredTableData[indexPath.row]
+        } else {
+            journalEntry = journalEntries[indexPath.row]
+        }
+
         if let photoData = journalEntry.photoData {
             journalCell.photoImageView.image = UIImage(data: photoData)
         }
@@ -34,22 +79,73 @@ class JournalListViewController: UIViewController, UITableViewDataSource, UITabl
         return journalCell
     }
     
-    // MARK: - UITableViewDelegate
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            SharedData.shared.removeJournalEntry(index: indexPath.row)
-            SharedData.shared.saveJournalEntriesData()
-            tableView.reloadData()
+    // MARK: - UICollectionViewDelegate
+    func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+        let config = UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { (elements) -> UIMenu? in
+            let delete = UIAction(title: "Delete") { [weak self] (action) in
+                if let search = self?.search, search.isActive, let selectedJournalEntry = self?.filteredTableData[indexPath.item] {
+                    self?.filteredTableData.remove(at: indexPath.item)
+                    self?.context?.delete(selectedJournalEntry)
+                } else {
+                    if let selectedJournalEntry = self?.journalEntries[indexPath.item] {
+                        self?.journalEntries.remove(at: indexPath.row)
+                        self?.context?.delete(selectedJournalEntry)
+                    }
+                }
+                collectionView.reloadData()
+            }
+            return UIMenu(title: "", image: nil, identifier: nil, options: [], children: [delete])
         }
+        return config
+    }
+    
+    // MARK: - UICollectionViewDelegateFlowLayout
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        var columns: CGFloat
+        if (traitCollection.horizontalSizeClass == .compact) {
+            columns = 1
+        } else {
+            columns = 2
+        }
+        let viewWidth = collectionView.frame.width
+        let inset = 10.0
+        let contentWidth = viewWidth - inset * (columns + 1)
+        let cellWidth = contentWidth / columns
+        let cellHeight = 90.0
+        
+        return CGSize(width: cellWidth, height: cellHeight)
+    }
+    
+    // MARK: - UISearchResultUpdating
+    func updateSearchResults(for searchController: UISearchController) {
+        guard let searchBarText = searchController.searchBar.text else {
+            return
+        }
+        filteredTableData.removeAll()
+//        for journalEntry in SharedData.shared.getAllJournalEntries() {
+//            if journalEntry.entryTitle.lowercased().contains(searchBarText.lowercased()) {
+//                filteredTableData.append(journalEntry)
+//            }
+//        }
+        filteredTableData = journalEntries.filter { journalEntry in
+            journalEntry.entryTitle.lowercased().contains(searchBarText.lowercased())
+        }
+        self.collectionView.reloadData()
     }
     
     // MARK: - Methods
+    func fetchJournalEntries() {
+        if let journalEntries = try? context?.fetch(descriptor) {
+            self.journalEntries = journalEntries
+        }
+    }
+    
     @IBAction func unwindNewEntryCancel(segue: UIStoryboardSegue) { }
     @IBAction func unwindNewEntrySave(segue: UIStoryboardSegue) {
         if let sourceViewController = segue.source as? AddJournalEntryViewController, let newJournalEntry = sourceViewController.newJournalEntry {
-            SharedData.shared.addJournalEntry(newJournalEntry: newJournalEntry)
-            SharedData.shared.saveJournalEntriesData()
-            tableView.reloadData()
+            self.context?.insert(newJournalEntry)
+            fetchJournalEntries()
+            collectionView.reloadData()
         }
     }
     
@@ -64,11 +160,17 @@ class JournalListViewController: UIViewController, UITableViewDataSource, UITabl
             return
         }
         guard let journalEntryDetailViewController = segue.destination as? JournalEntryDetailViewController,
-              let selectedJournalCell = sender as? JournalListTableViewCell,
-              let indexPath = tableView.indexPath(for: selectedJournalCell) else {
+              let selectedJournalCell = sender as? JournalListCollectionViewCell,
+              let indexPath = collectionView.indexPath(for: selectedJournalCell) else {
             fatalError("Could not get indexPath")
         }
-        let selectedJournalEntry = SharedData.shared.getJournalEntry(index: indexPath.row)
+        
+        let selectedJournalEntry: JournalEntry
+        if self.search.isActive {
+            selectedJournalEntry = filteredTableData[indexPath.row]
+        } else {
+            selectedJournalEntry = journalEntries[indexPath.row]
+        }
         journalEntryDetailViewController.selectedJournalEntry = selectedJournalEntry
 
     }
