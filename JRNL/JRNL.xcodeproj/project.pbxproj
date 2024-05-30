@@ -15,12 +15,43 @@
 		AF33271D2BEA0B81001B1C87 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = AF33271C2BEA0B81001B1C87 /* Base */; };
 		AF787EFC2BF5BDBA00F2E514 /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF787EFB2BF5BDBA00F2E514 /* RatingView.swift */; };
 		AFCC37F82C05936E00E3F70A /* JournalMapAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCC37F72C05936E00E3F70A /* JournalMapAnnotation.swift */; };
+		AFD0F3D72C08033200EF2CFF /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFD0F3BF2C0801BF00EF2CFF /* WidgetKit.framework */; };
+		AFD0F3D82C08033200EF2CFF /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFD0F3C12C0801BF00EF2CFF /* SwiftUI.framework */; };
+		AFD0F3DB2C08033200EF2CFF /* JRNLWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD0F3DA2C08033200EF2CFF /* JRNLWidgetBundle.swift */; };
+		AFD0F3DD2C08033200EF2CFF /* JRNLWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD0F3DC2C08033200EF2CFF /* JRNLWidget.swift */; };
+		AFD0F3DF2C08033600EF2CFF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AFD0F3DE2C08033600EF2CFF /* Assets.xcassets */; };
+		AFD0F3E32C08033600EF2CFF /* JRNLWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = AFD0F3D62C08033200EF2CFF /* JRNLWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		AFD0F3E72C080AB300EF2CFF /* JournalEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE82A7F2BEDB8F90015957A /* JournalEntry.swift */; };
 		AFDBAA562BF3282F007A9BA1 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFDBAA552BF3282F007A9BA1 /* MapViewController.swift */; };
 		AFE82A802BEDB8F90015957A /* JournalEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE82A7F2BEDB8F90015957A /* JournalEntry.swift */; };
 		AFE82A822BEDC0D50015957A /* JournalListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE82A812BEDC0D50015957A /* JournalListCollectionViewCell.swift */; };
 		AFE82A872BEDE5DB0015957A /* AddJournalEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE82A862BEDE5DB0015957A /* AddJournalEntryViewController.swift */; };
 		AFE82A8A2BEE01E00015957A /* JournalEntryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE82A892BEE01E00015957A /* JournalEntryDetailViewController.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		AFD0F3E12C08033600EF2CFF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AF3327052BEA0B7E001B1C87 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AFD0F3D52C08033200EF2CFF;
+			remoteInfo = JRNLWidgetExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		AFD0F3CE2C0801C200EF2CFF /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				AFD0F3E32C08033600EF2CFF /* JRNLWidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		AF33270D2BEA0B7E001B1C87 /* JRNL.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JRNL.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -33,6 +64,14 @@
 		AF33271E2BEA0B81001B1C87 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AF787EFB2BF5BDBA00F2E514 /* RatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingView.swift; sourceTree = "<group>"; };
 		AFCC37F72C05936E00E3F70A /* JournalMapAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalMapAnnotation.swift; sourceTree = "<group>"; };
+		AFD0F3BF2C0801BF00EF2CFF /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		AFD0F3C12C0801BF00EF2CFF /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		AFD0F3D62C08033200EF2CFF /* JRNLWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = JRNLWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		AFD0F3DA2C08033200EF2CFF /* JRNLWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JRNLWidgetBundle.swift; sourceTree = "<group>"; };
+		AFD0F3DC2C08033200EF2CFF /* JRNLWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JRNLWidget.swift; sourceTree = "<group>"; };
+		AFD0F3DE2C08033600EF2CFF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		AFD0F3E02C08033600EF2CFF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AFD0F3E82C080B6E00EF2CFF /* JRNL.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = JRNL.entitlements; sourceTree = "<group>"; };
 		AFDBAA552BF3282F007A9BA1 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		AFE82A7F2BEDB8F90015957A /* JournalEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalEntry.swift; sourceTree = "<group>"; };
 		AFE82A812BEDC0D50015957A /* JournalListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalListCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -48,6 +87,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		AFD0F3D32C08033200EF2CFF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AFD0F3D82C08033200EF2CFF /* SwiftUI.framework in Frameworks */,
+				AFD0F3D72C08033200EF2CFF /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -55,6 +103,8 @@
 			isa = PBXGroup;
 			children = (
 				AF33270F2BEA0B7E001B1C87 /* JRNL */,
+				AFD0F3D92C08033200EF2CFF /* JRNLWidget */,
+				AFD0F3BE2C0801BF00EF2CFF /* Frameworks */,
 				AF33270E2BEA0B7E001B1C87 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -63,6 +113,7 @@
 			isa = PBXGroup;
 			children = (
 				AF33270D2BEA0B7E001B1C87 /* JRNL.app */,
+				AFD0F3D62C08033200EF2CFF /* JRNLWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -70,6 +121,7 @@
 		AF33270F2BEA0B7E001B1C87 /* JRNL */ = {
 			isa = PBXGroup;
 			children = (
+				AFD0F3E82C080B6E00EF2CFF /* JRNL.entitlements */,
 				AF3327102BEA0B7E001B1C87 /* AppDelegate.swift */,
 				AF3327122BEA0B7E001B1C87 /* SceneDelegate.swift */,
 				AFE82A882BEE01890015957A /* Entry Detail Scene */,
@@ -84,6 +136,26 @@
 				AF33271E2BEA0B81001B1C87 /* Info.plist */,
 			);
 			path = JRNL;
+			sourceTree = "<group>";
+		};
+		AFD0F3BE2C0801BF00EF2CFF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AFD0F3BF2C0801BF00EF2CFF /* WidgetKit.framework */,
+				AFD0F3C12C0801BF00EF2CFF /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		AFD0F3D92C08033200EF2CFF /* JRNLWidget */ = {
+			isa = PBXGroup;
+			children = (
+				AFD0F3DA2C08033200EF2CFF /* JRNLWidgetBundle.swift */,
+				AFD0F3DC2C08033200EF2CFF /* JRNLWidget.swift */,
+				AFD0F3DE2C08033600EF2CFF /* Assets.xcassets */,
+				AFD0F3E02C08033600EF2CFF /* Info.plist */,
+			);
+			path = JRNLWidget;
 			sourceTree = "<group>";
 		};
 		AFDBAA542BF327E8007A9BA1 /* Map Screen */ = {
@@ -146,15 +218,34 @@
 				AF3327092BEA0B7E001B1C87 /* Sources */,
 				AF33270A2BEA0B7E001B1C87 /* Frameworks */,
 				AF33270B2BEA0B7E001B1C87 /* Resources */,
+				AFD0F3CE2C0801C200EF2CFF /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				AFD0F3E22C08033600EF2CFF /* PBXTargetDependency */,
 			);
 			name = JRNL;
 			productName = JRNL;
 			productReference = AF33270D2BEA0B7E001B1C87 /* JRNL.app */;
 			productType = "com.apple.product-type.application";
+		};
+		AFD0F3D52C08033200EF2CFF /* JRNLWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AFD0F3E42C08033600EF2CFF /* Build configuration list for PBXNativeTarget "JRNLWidgetExtension" */;
+			buildPhases = (
+				AFD0F3D22C08033200EF2CFF /* Sources */,
+				AFD0F3D32C08033200EF2CFF /* Frameworks */,
+				AFD0F3D42C08033200EF2CFF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = JRNLWidgetExtension;
+			productName = JRNLWidgetExtension;
+			productReference = AFD0F3D62C08033200EF2CFF /* JRNLWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -163,11 +254,14 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1530;
+				LastSwiftUpdateCheck = 1540;
 				LastUpgradeCheck = 1530;
 				TargetAttributes = {
 					AF33270C2BEA0B7E001B1C87 = {
 						CreatedOnToolsVersion = 15.3;
+					};
+					AFD0F3D52C08033200EF2CFF = {
+						CreatedOnToolsVersion = 15.4;
 					};
 				};
 			};
@@ -185,6 +279,7 @@
 			projectRoot = "";
 			targets = (
 				AF33270C2BEA0B7E001B1C87 /* JRNL */,
+				AFD0F3D52C08033200EF2CFF /* JRNLWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -197,6 +292,14 @@
 				AF33271A2BEA0B81001B1C87 /* Assets.xcassets in Resources */,
 				AF33271D2BEA0B81001B1C87 /* Base in Resources */,
 				AF3327182BEA0B7E001B1C87 /* Base in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AFD0F3D42C08033200EF2CFF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AFD0F3DF2C08033600EF2CFF /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -220,7 +323,25 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		AFD0F3D22C08033200EF2CFF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AFD0F3E72C080AB300EF2CFF /* JournalEntry.swift in Sources */,
+				AFD0F3DB2C08033200EF2CFF /* JRNLWidgetBundle.swift in Sources */,
+				AFD0F3DD2C08033200EF2CFF /* JRNLWidget.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		AFD0F3E22C08033600EF2CFF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AFD0F3D52C08033200EF2CFF /* JRNLWidgetExtension */;
+			targetProxy = AFD0F3E12C08033600EF2CFF /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		AF3327162BEA0B7E001B1C87 /* Main.storyboard */ = {
@@ -364,10 +485,13 @@
 		AF3327222BEA0B81001B1C87 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = JRNL/JRNL.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 86P63J8F65;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = JRNL/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
@@ -394,10 +518,13 @@
 		AF3327232BEA0B81001B1C87 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = JRNL/JRNL.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 86P63J8F65;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = JRNL/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
@@ -421,6 +548,60 @@
 			};
 			name = Release;
 		};
+		AFD0F3E52C08033600EF2CFF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = JRNLWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = JRNLWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = kr.co.jeje.JRNL.JRNLWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		AFD0F3E62C08033600EF2CFF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = JRNLWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = JRNLWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = kr.co.jeje.JRNL.JRNLWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -438,6 +619,15 @@
 			buildConfigurations = (
 				AF3327222BEA0B81001B1C87 /* Debug */,
 				AF3327232BEA0B81001B1C87 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AFD0F3E42C08033600EF2CFF /* Build configuration list for PBXNativeTarget "JRNLWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AFD0F3E52C08033600EF2CFF /* Debug */,
+				AFD0F3E62C08033600EF2CFF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
